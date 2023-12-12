@@ -88,7 +88,7 @@ function getExercises(){
 
     	$.each(response, function(key, value) {
     		
-    		var lstResults = "<tr><td>"+value.workout+"</td><td>"+value.reps+"</td><td>"+value.sets+"</td>" +
+    		var lstResults = "<tr><td><img class='img-responsive img-thumbnail img-rounded artImage' src='./uploads/images/college.png'></td><td>"+value.workout+"</td><td>"+value.reps+"</td><td>"+value.sets+"</td>" +
     		"<td>"+value.weight+"</td>" + "<td>"+value.lastupdate+"</td>" + "<td>"+value.setday+"</td>" +
     		"<td><a href = '#' onclick=editExercise("+value.id+") data-toggle='tooltip' title='Edit'>Edit</a></td>" +
     		"<td><a href = '#' onclick=deleteExercise("+value.id+") data-toggle='tooltip' title='Delete'>Delete</a></td></tr>";
