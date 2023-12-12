@@ -58,19 +58,19 @@ $(document).ready(function(){
 
 	getExercises();
 	
-	getMonday();
+	//getMonday();
 	
-	getTuesday();
+	//getTuesday();
 	
-	getWednesday();
+	//getWednesday();
 	
-	getThursday();
+	//getThursday();
 	
-	getFriday();
+	//getFriday();
 	
-	getSaturday();
+	//getSaturday();
 	
-	getSunday();
+	//getSunday();
 });
 
 //Client side API call using AJAX
@@ -97,234 +97,39 @@ function getExercises(){
     		if($("#postBody").text()){
 				   document.getElementById('postBody').innerHTML += lstResults;
 			   }
-    	});
-	});
-}
-
-function getMonday(){
-	
-	$.ajax({
-		url: "./webapi/exercises",
-		type: 'GET',
-		dataType : "json",
-        contentType: "application/json",
-	}).fail(function(response) {
-		console.log(JSON.stringify(response));
-
-    }).done(function(response){
-
-    	$.each(response, function(key, value) {
-    		
-    		if (value.setday == "Monday" || value.setday == "monday"){
-				
-				var lstResults = "<tr><td>"+value.workout+"</td><td>"+value.reps+"</td><td>"+value.sets+"</td>" +
-    		"<td>"+value.weight+"</td>" + "<td>"+value.lastupdate+"</td>" + "<td>"+value.setday+"</td>" +
-    		"<td><a href = '#' onclick=editExercise("+value.id+") data-toggle='tooltip' title='Edit'>Edit</a></td>" +
-    		"<td><a href = '#' onclick=deleteExercise("+value.id+") data-toggle='tooltip' title='Delete'>Delete</a></td></tr>";
-				
-			
-    		
-       		
-       		//if postBody exist in the html page execute
-    		if($("#postBodyMonday").text()){
+			   
+			if (value.setday == "Monday" || value.setday == "monday"){
+				if($("#postBodyMonday").text()){
 				   document.getElementById('postBodyMonday').innerHTML += lstResults;
 			   }
 			}
-    	});
-	});
-}
-
-function getTuesday(){
-	
-	$.ajax({
-		url: "./webapi/exercises",
-		type: 'GET',
-		dataType : "json",
-        contentType: "application/json",
-	}).fail(function(response) {
-		console.log(JSON.stringify(response));
-
-    }).done(function(response){
-
-    	$.each(response, function(key, value) {
-    		
-    		if (value.setday == "Tuesday" || value.setday == "tuesday"){
-				
-				var lstResults = "<tr><td>"+value.workout+"</td><td>"+value.reps+"</td><td>"+value.sets+"</td>" +
-    		"<td>"+value.weight+"</td>" + "<td>"+value.lastupdate+"</td>" + "<td>"+value.setday+"</td>" +
-    		"<td><a href = '#' onclick=editExercise("+value.id+") data-toggle='tooltip' title='Edit'>Edit</a></td>" +
-    		"<td><a href = '#' onclick=deleteExercise("+value.id+") data-toggle='tooltip' title='Delete'>Delete</a></td></tr>";
-				
-			
-    		
-       		
-       		//if postBody exist in the html page execute
-    		if($("#postBodyTuesday").text()){
+			if (value.setday == "Tuesday" || value.setday == "tuesday"){
+				if($("#postBodyTuesday").text()){
 				   document.getElementById('postBodyTuesday').innerHTML += lstResults;
 			   }
 			}
-    	});
-	});
-}
-
-function getWednesday(){
-	
-	$.ajax({
-		url: "./webapi/exercises",
-		type: 'GET',
-		dataType : "json",
-        contentType: "application/json",
-	}).fail(function(response) {
-		console.log(JSON.stringify(response));
-
-    }).done(function(response){
-
-    	$.each(response, function(key, value) {
-    		
-    		if (value.setday == "Wednesday" || value.setday == "wednesday"){
-				
-				var lstResults = "<tr><td>"+value.workout+"</td><td>"+value.reps+"</td><td>"+value.sets+"</td>" +
-    		"<td>"+value.weight+"</td>" + "<td>"+value.lastupdate+"</td>" + "<td>"+value.setday+"</td>" +
-    		"<td><a href = '#' onclick=editExercise("+value.id+") data-toggle='tooltip' title='Edit'>Edit</a></td>" +
-    		"<td><a href = '#' onclick=deleteExercise("+value.id+") data-toggle='tooltip' title='Delete'>Delete</a></td></tr>";
-				
-			
-    		
-       		
-       		//if postBody exist in the html page execute
-    		if($("#postBodyWednesday").text()){
+			if (value.setday == "Wednesday" || value.setday == "wednesday"){
+				if($("#postBodyWednesday").text()){
 				   document.getElementById('postBodyWednesday').innerHTML += lstResults;
 			   }
 			}
-    	});
-	});
-}
-
-function getThursday(){
-	
-	$.ajax({
-		url: "./webapi/exercises",
-		type: 'GET',
-		dataType : "json",
-        contentType: "application/json",
-	}).fail(function(response) {
-		console.log(JSON.stringify(response));
-
-    }).done(function(response){
-
-    	$.each(response, function(key, value) {
-    		
-    		if (value.setday == "Thursday" || value.setday == "thursday"){
-				
-				var lstResults = "<tr><td>"+value.workout+"</td><td>"+value.reps+"</td><td>"+value.sets+"</td>" +
-    		"<td>"+value.weight+"</td>" + "<td>"+value.lastupdate+"</td>" + "<td>"+value.setday+"</td>" +
-    		"<td><a href = '#' onclick=editExercise("+value.id+") data-toggle='tooltip' title='Edit'>Edit</a></td>" +
-    		"<td><a href = '#' onclick=deleteExercise("+value.id+") data-toggle='tooltip' title='Delete'>Delete</a></td></tr>";
-				
-			
-    		
-       		
-       		//if postBody exist in the html page execute
-    		if($("#postBodyThursday").text()){
+			if (value.setday == "Thursday" || value.setday == "thursday"){
+				if($("#postBodyThursday").text()){
 				   document.getElementById('postBodyThursday').innerHTML += lstResults;
 			   }
 			}
-    	});
-	});
-}
-
-function getFriday(){
-	
-	$.ajax({
-		url: "./webapi/exercises",
-		type: 'GET',
-		dataType : "json",
-        contentType: "application/json",
-	}).fail(function(response) {
-		console.log(JSON.stringify(response));
-
-    }).done(function(response){
-
-    	$.each(response, function(key, value) {
-    		
-    		if (value.setday == "Friday" || value.setday == "friday"){
-				
-				var lstResults = "<tr><td>"+value.workout+"</td><td>"+value.reps+"</td><td>"+value.sets+"</td>" +
-    		"<td>"+value.weight+"</td>" + "<td>"+value.lastupdate+"</td>" + "<td>"+value.setday+"</td>" +
-    		"<td><a href = '#' onclick=editExercise("+value.id+") data-toggle='tooltip' title='Edit'>Edit</a></td>" +
-    		"<td><a href = '#' onclick=deleteExercise("+value.id+") data-toggle='tooltip' title='Delete'>Delete</a></td></tr>";
-				
-			
-    		
-       		
-       		//if postBody exist in the html page execute
-    		if($("#postBodyFriday").text()){
+			if (value.setday == "Friday" || value.setday == "friday"){
+				if($("#postBodyFriday").text()){
 				   document.getElementById('postBodyFriday').innerHTML += lstResults;
 			   }
 			}
-    	});
-	});
-}
-
-function getSaturday(){
-	
-	$.ajax({
-		url: "./webapi/exercises",
-		type: 'GET',
-		dataType : "json",
-        contentType: "application/json",
-	}).fail(function(response) {
-		console.log(JSON.stringify(response));
-
-    }).done(function(response){
-
-    	$.each(response, function(key, value) {
-    		
-    		if (value.setday == "Saturday" || value.setday == "saturday"){
-				
-				var lstResults = "<tr><td>"+value.workout+"</td><td>"+value.reps+"</td><td>"+value.sets+"</td>" +
-    		"<td>"+value.weight+"</td>" + "<td>"+value.lastupdate+"</td>" + "<td>"+value.setday+"</td>" +
-    		"<td><a href = '#' onclick=editExercise("+value.id+") data-toggle='tooltip' title='Edit'>Edit</a></td>" +
-    		"<td><a href = '#' onclick=deleteExercise("+value.id+") data-toggle='tooltip' title='Delete'>Delete</a></td></tr>";
-				
-			
-    		
-       		
-       		//if postBody exist in the html page execute
-    		if($("#postBodySaturday").text()){
+			if (value.setday == "Saturday" || value.setday == "saturday"){
+				if($("#postBodySaturday").text()){
 				   document.getElementById('postBodySaturday').innerHTML += lstResults;
 			   }
 			}
-    	});
-	});
-}
-
-function getSunday(){
-	
-	$.ajax({
-		url: "./webapi/exercises",
-		type: 'GET',
-		dataType : "json",
-        contentType: "application/json",
-	}).fail(function(response) {
-		console.log(JSON.stringify(response));
-
-    }).done(function(response){
-
-    	$.each(response, function(key, value) {
-    		
-    		if (value.setday == "Sunday" || value.setday == "sunday"){
-				
-				var lstResults = "<tr><td>"+value.workout+"</td><td>"+value.reps+"</td><td>"+value.sets+"</td>" +
-    		"<td>"+value.weight+"</td>" + "<td>"+value.lastupdate+"</td>" + "<td>"+value.setday+"</td>" +
-    		"<td><a href = '#' onclick=editExercise("+value.id+") data-toggle='tooltip' title='Edit'>Edit</a></td>" +
-    		"<td><a href = '#' onclick=deleteExercise("+value.id+") data-toggle='tooltip' title='Delete'>Delete</a></td></tr>";
-				
-			
-    		
-       		
-       		//if postBody exist in the html page execute
-    		if($("#postBodySunday").text()){
+			if (value.setday == "Sunday" || value.setday == "sunday"){
+				if($("#postBodySunday").text()){
 				   document.getElementById('postBodySunday').innerHTML += lstResults;
 			   }
 			}
@@ -502,3 +307,234 @@ function clearAddExercisesInterface()
 
 	
 }
+
+//function getMonday(){
+//	
+//	$.ajax({
+//		url: "./webapi/exercises",
+//		type: 'GET',
+//		dataType : "json",
+//        contentType: "application/json",
+//	}).fail(function(response) {
+//		console.log(JSON.stringify(response));
+//
+//    }).done(function(response){
+//
+//    	$.each(response, function(key, value) {
+//    		
+//    		if (value.setday == "Monday" || value.setday == "monday"){
+//				
+//				var lstResults = "<tr><td>"+value.workout+"</td><td>"+value.reps+"</td><td>"+value.sets+"</td>" +
+//    		"<td>"+value.weight+"</td>" + "<td>"+value.lastupdate+"</td>" + "<td>"+value.setday+"</td>" +
+//    		"<td><a href = '#' onclick=editExercise("+value.id+") data-toggle='tooltip' title='Edit'>Edit</a></td>" +
+//    		"<td><a href = '#' onclick=deleteExercise("+value.id+") data-toggle='tooltip' title='Delete'>Delete</a></td></tr>";
+//				
+//			
+//    		
+//       		
+//       		//if postBody exist in the html page execute
+//    		if($("#postBodyMonday").text()){
+//				   document.getElementById('postBodyMonday').innerHTML += lstResults;
+//			   }
+//			}
+//    	});
+//	});
+//}
+//
+//function getTuesday(){
+//	
+//	$.ajax({
+//		url: "./webapi/exercises",
+//		type: 'GET',
+//		dataType : "json",
+//        contentType: "application/json",
+//	}).fail(function(response) {
+//		console.log(JSON.stringify(response));
+//
+//    }).done(function(response){
+//
+//    	$.each(response, function(key, value) {
+//    		
+//    		if (value.setday == "Tuesday" || value.setday == "tuesday"){
+//				
+//				var lstResults = "<tr><td>"+value.workout+"</td><td>"+value.reps+"</td><td>"+value.sets+"</td>" +
+//    		"<td>"+value.weight+"</td>" + "<td>"+value.lastupdate+"</td>" + "<td>"+value.setday+"</td>" +
+//    		"<td><a href = '#' onclick=editExercise("+value.id+") data-toggle='tooltip' title='Edit'>Edit</a></td>" +
+//    		"<td><a href = '#' onclick=deleteExercise("+value.id+") data-toggle='tooltip' title='Delete'>Delete</a></td></tr>";
+//				
+//			
+//    		
+//       		
+//       		//if postBody exist in the html page execute
+//    		if($("#postBodyTuesday").text()){
+//				   document.getElementById('postBodyTuesday').innerHTML += lstResults;
+//			   }
+//			}
+//    	});
+//	});
+//}
+//
+//function getWednesday(){
+//	
+//	$.ajax({
+//		url: "./webapi/exercises",
+//		type: 'GET',
+//		dataType : "json",
+//        contentType: "application/json",
+//	}).fail(function(response) {
+//		console.log(JSON.stringify(response));
+//
+//    }).done(function(response){
+//
+//    	$.each(response, function(key, value) {
+//    		
+//    		if (value.setday == "Wednesday" || value.setday == "wednesday"){
+//				
+//				var lstResults = "<tr><td>"+value.workout+"</td><td>"+value.reps+"</td><td>"+value.sets+"</td>" +
+//    		"<td>"+value.weight+"</td>" + "<td>"+value.lastupdate+"</td>" + "<td>"+value.setday+"</td>" +
+//    		"<td><a href = '#' onclick=editExercise("+value.id+") data-toggle='tooltip' title='Edit'>Edit</a></td>" +
+//    		"<td><a href = '#' onclick=deleteExercise("+value.id+") data-toggle='tooltip' title='Delete'>Delete</a></td></tr>";
+//				
+//			
+//    		
+//       		
+//       		//if postBody exist in the html page execute
+//    		if($("#postBodyWednesday").text()){
+//				   document.getElementById('postBodyWednesday').innerHTML += lstResults;
+//			   }
+//			}
+//    	});
+//	});
+//}
+//
+//function getThursday(){
+//	
+//	$.ajax({
+//		url: "./webapi/exercises",
+//		type: 'GET',
+//		dataType : "json",
+//        contentType: "application/json",
+//	}).fail(function(response) {
+//		console.log(JSON.stringify(response));
+//
+//    }).done(function(response){
+//
+//    	$.each(response, function(key, value) {
+//    		
+//    		if (value.setday == "Thursday" || value.setday == "thursday"){
+//				
+//				var lstResults = "<tr><td>"+value.workout+"</td><td>"+value.reps+"</td><td>"+value.sets+"</td>" +
+//    		"<td>"+value.weight+"</td>" + "<td>"+value.lastupdate+"</td>" + "<td>"+value.setday+"</td>" +
+//    		"<td><a href = '#' onclick=editExercise("+value.id+") data-toggle='tooltip' title='Edit'>Edit</a></td>" +
+//    		"<td><a href = '#' onclick=deleteExercise("+value.id+") data-toggle='tooltip' title='Delete'>Delete</a></td></tr>";
+//				
+//			
+//    		
+//       		
+//       		//if postBody exist in the html page execute
+//    		if($("#postBodyThursday").text()){
+//				   document.getElementById('postBodyThursday').innerHTML += lstResults;
+//			   }
+//			}
+//    	});
+//	});
+//}
+//
+//function getFriday(){
+//	
+//	$.ajax({
+//		url: "./webapi/exercises",
+//		type: 'GET',
+//		dataType : "json",
+//        contentType: "application/json",
+//	}).fail(function(response) {
+//		console.log(JSON.stringify(response));
+//
+//    }).done(function(response){
+//
+//    	$.each(response, function(key, value) {
+//    		
+//    		if (value.setday == "Friday" || value.setday == "friday"){
+//				
+//				var lstResults = "<tr><td>"+value.workout+"</td><td>"+value.reps+"</td><td>"+value.sets+"</td>" +
+//    		"<td>"+value.weight+"</td>" + "<td>"+value.lastupdate+"</td>" + "<td>"+value.setday+"</td>" +
+//    		"<td><a href = '#' onclick=editExercise("+value.id+") data-toggle='tooltip' title='Edit'>Edit</a></td>" +
+//    		"<td><a href = '#' onclick=deleteExercise("+value.id+") data-toggle='tooltip' title='Delete'>Delete</a></td></tr>";
+//				
+//			
+//    		
+//       		
+//       		//if postBody exist in the html page execute
+//    		if($("#postBodyFriday").text()){
+//				   document.getElementById('postBodyFriday').innerHTML += lstResults;
+//			   }
+//			}
+//    	});
+//	});
+//}
+//
+//function getSaturday(){
+//	
+//	$.ajax({
+//		url: "./webapi/exercises",
+//		type: 'GET',
+//		dataType : "json",
+//        contentType: "application/json",
+//	}).fail(function(response) {
+//		console.log(JSON.stringify(response));
+//
+//    }).done(function(response){
+//
+//    	$.each(response, function(key, value) {
+//    		
+//    		if (value.setday == "Saturday" || value.setday == "saturday"){
+//				
+//				var lstResults = "<tr><td>"+value.workout+"</td><td>"+value.reps+"</td><td>"+value.sets+"</td>" +
+//    		"<td>"+value.weight+"</td>" + "<td>"+value.lastupdate+"</td>" + "<td>"+value.setday+"</td>" +
+//    		"<td><a href = '#' onclick=editExercise("+value.id+") data-toggle='tooltip' title='Edit'>Edit</a></td>" +
+//    		"<td><a href = '#' onclick=deleteExercise("+value.id+") data-toggle='tooltip' title='Delete'>Delete</a></td></tr>";
+//				
+//			
+//    		
+//       		
+//       		//if postBody exist in the html page execute
+//    		if($("#postBodySaturday").text()){
+//				   document.getElementById('postBodySaturday').innerHTML += lstResults;
+//			   }
+//			}
+//    	});
+//	});
+//}
+//
+//function getSunday(){
+//	
+//	$.ajax({
+//		url: "./webapi/exercises",
+//		type: 'GET',
+//		dataType : "json",
+//        contentType: "application/json",
+//	}).fail(function(response) {
+//		console.log(JSON.stringify(response));
+//
+//    }).done(function(response){
+//
+//    	$.each(response, function(key, value) {
+//    		
+//    		if (value.setday == "Sunday" || value.setday == "sunday"){
+//				
+//				var lstResults = "<tr><td>"+value.workout+"</td><td>"+value.reps+"</td><td>"+value.sets+"</td>" +
+//    		"<td>"+value.weight+"</td>" + "<td>"+value.lastupdate+"</td>" + "<td>"+value.setday+"</td>" +
+//    		"<td><a href = '#' onclick=editExercise("+value.id+") data-toggle='tooltip' title='Edit'>Edit</a></td>" +
+//    		"<td><a href = '#' onclick=deleteExercise("+value.id+") data-toggle='tooltip' title='Delete'>Delete</a></td></tr>";
+//				
+//			
+//    		
+//       		
+//       		//if postBody exist in the html page execute
+//    		if($("#postBodySunday").text()){
+//				   document.getElementById('postBodySunday').innerHTML += lstResults;
+//			   }
+//			}
+//    	});
+//	});
+//}
