@@ -161,10 +161,14 @@ function getExercise(){
 		
     }).done(function(response) {
     	console.log(response);
+    	
+    	if (response.image == null){
+				response.image = "StockImage.png"
+			}
 			
     	var lstResults = "<tr><th>ID</th><th>Work Out</th><th>Reps</th><th>Sets</th>"+
 			"<th>Weight</th> <th>Last Update</th> <th>	Set Day</th> <th></th><th></th></tr>"+
-			"<tr><td>"+response.id+"</td><td>"+response.workout+"</td><td>"+response.reps+"</td><td>"+response.sets+"</td>" +
+			"<tr><td>"+response.id+"</td><td><img class='img-responsive img-thumbnail img-rounded artImage' src='./uploads/images/"+response.image+"'></td><td>"+response.workout+"</td><td>"+response.reps+"</td><td>"+response.sets+"</td>" +
     		"<td>"+response.weight+"</td><td>"+response.lastupdate+"</td><td>"+response.setday+"</td>" +
     		"<td><a href = '#' onclick=editExercise("+response.id+") data-toggle='tooltip' title='Edit'>Edit</a></td>" +
     		"<td><a href = '#' onclick=deleteExercise("+response.id+") data-toggle='tooltip' title='Delete'>Delete</a></td></tr>";
