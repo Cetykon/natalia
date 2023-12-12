@@ -234,7 +234,7 @@ function addExercise(){
 
     }).done(function(response){
 
-		window.location="./index.html";
+		window.location="./main.html";
     	
 	});
 }
@@ -248,7 +248,7 @@ function deleteExercise(id){
 
     }).done(function(response){
 
-		window.location="./index.html";
+		window.location="./main.html";
     	
 	});
 }
@@ -299,7 +299,7 @@ function updateExercise(){
 
     }).done(function(response){
 
-		window.location="./index.html";
+		window.location="./main.html";
     	
 	});
 	
