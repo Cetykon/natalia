@@ -17,7 +17,8 @@ public class Exercises {
 	private String weight;
 	private String lastupdate;
 	private String setday;
-	
+	private String image;
+
 	public Exercises() {
 		
 		
@@ -83,7 +84,14 @@ public class Exercises {
 	public void setLastupdate(String lastupdate) {
 		this.lastupdate = lastupdate;
 	}
+	
+	public String getImage() {
+		return image;
+	}
 
+	public void setImage(String image) {
+		this.image = image;
+	}
 
 
 
