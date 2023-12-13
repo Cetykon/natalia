@@ -29,7 +29,7 @@ function login(){
 		
 		if(response.password == password){
 			
-			window.location="./main.html";
+			window.location="./client.html";
 		}else{
 			
 			$("#message").text("login unsuccessful");

@@ -95,8 +95,7 @@ function getExercises(){
     		
     		var lstResults = "<tr><td><img class='img-responsive img-thumbnail img-rounded artImage' src='./uploads/images/"+value.image+"'></td><td>"+value.workout+"</td><td>"+value.reps+"</td><td>"+value.sets+"</td>" +
     		"<td>"+value.weight+"</td>" + "<td>"+value.lastupdate+"</td>" + "<td>"+value.setday+"</td>" +
-    		"<td><a href = '#' onclick=editExercise("+value.id+") data-toggle='tooltip' title='Edit'>Edit</a></td>" +
-    		"<td><a href = '#' onclick=deleteExercise("+value.id+") data-toggle='tooltip' title='Delete'>Delete</a></td></tr>";
+    		"<td><a href = '#' onclick=editExercise("+value.id+") data-toggle='tooltip' title='Edit'>Edit</a></td></tr>";
        		
        		//if postBody exist in the html page execute
     		if($("#postBody").text()){
@@ -170,8 +169,7 @@ function getExercise(){
 			"<th>Weight</th> <th>Last Update</th> <th>	Set Day</th> <th></th><th></th></tr>"+
 			"<tr><td>"+response.id+"</td><td><img class='img-responsive img-thumbnail img-rounded artImage' src='./uploads/images/"+response.image+"'></td><td>"+response.workout+"</td><td>"+response.reps+"</td><td>"+response.sets+"</td>" +
     		"<td>"+response.weight+"</td><td>"+response.lastupdate+"</td><td>"+response.setday+"</td>" +
-    		"<td><a href = '#' onclick=editExercise("+response.id+") data-toggle='tooltip' title='Edit'>Edit</a></td>" +
-    		"<td><a href = '#' onclick=deleteExercise("+response.id+") data-toggle='tooltip' title='Delete'>Delete</a></td></tr>";
+    		"<td><a href = '#' onclick=editExercise("+response.id+") data-toggle='tooltip' title='Edit'>Edit</a></td></tr>";
        		
        		//if postBody exist in the html page execute
     		if($("#searchBody").text()){
@@ -221,6 +219,7 @@ function addExercise(){
 		return;
 	}
 	
+	
 	//creates a json object of the fields
 	var parms = { workout:exercisesWorkOut, reps:exercisesReps, sets:exercisesSets, weight:exercisesWeight, lastupdate:exercisesLastUpdate, setday:exercisesSetDay };
 	
@@ -234,24 +233,11 @@ function addExercise(){
 
     }).done(function(response){
 
-		window.location="./main.html";
+		window.location="./client.html";
     	
 	});
 }
 
-function deleteExercise(id){
-	$.ajax({
-		url: "./webapi/exercises/"+id,
-		type: 'DELETE',
-	}).fail(function(response) {
-		console.log(JSON.stringify(response));
-
-    }).done(function(response){
-
-		window.location="./main.html";
-    	
-	});
-}
 
 function editExercise(id){
 	
@@ -274,6 +260,7 @@ function editExercise(id){
 		$("#exercisesWeightModal").val(response.weight);
     	$("#exercisesLastUpdateModal").val(response.lastupdate);
     	$("#exercisesSetDayModal").val(response.setday);
+    	$("#exercisesImageModal").val(response.image);
 	});
 }
 
@@ -286,8 +273,14 @@ function updateExercise(){
 	var exercisesWeight = $("#exercisesWeightModal").val();
 	var exercisesLastUpdate = $("#exercisesLastUpdateModal").val();
 	var exercisesSetDay = $("#exercisesSetDayModal").val();
+	var exercisesImage = $("#exercisesImageModal").val();
 	
-	var parms = { id:contactIDModal, workout:exercisesWorkOut, reps:exercisesReps, sets:exercisesSets, weight:exercisesWeight, lastupdate:exercisesLastUpdate, setday:exercisesSetDay }
+	if(exercisesImage == ""){
+		var parms = { id:contactIDModal, workout:exercisesWorkOut, reps:exercisesReps, sets:exercisesSets, weight:exercisesWeight, lastupdate:exercisesLastUpdate, setday:exercisesSetDay}
+	}else {
+		var parms = { id:contactIDModal, workout:exercisesWorkOut, reps:exercisesReps, sets:exercisesSets, weight:exercisesWeight, lastupdate:exercisesLastUpdate, setday:exercisesSetDay, image:exercisesImage}
+	}
+	
 	
 	$.ajax({
 		url: "./webapi/exercises/"+contactIDModal,
@@ -299,7 +292,7 @@ function updateExercise(){
 
     }).done(function(response){
 
-		window.location="./main.html";
+		window.location="./client.html";
     	
 	});
 	
