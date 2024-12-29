@@ -16,12 +16,10 @@
 
 
 -- Dumping database structure for workout
-DROP DATABASE IF EXISTS `workout`;
 CREATE DATABASE IF NOT EXISTS `workout` /*!40100 DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci */;
 USE `workout`;
 
 -- Dumping structure for table workout.exercises
-DROP TABLE IF EXISTS `exercises`;
 CREATE TABLE IF NOT EXISTS `exercises` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `workout` varchar(50) DEFAULT NULL,
@@ -68,7 +66,6 @@ REPLACE INTO `exercises` (`id`, `workout`, `reps`, `sets`, `weight`, `lastupdate
 	(38, 'test', '5', '3', '20lb', '12/12/23', 'monday', NULL);
 
 -- Dumping structure for table workout.exercisetable
-DROP TABLE IF EXISTS `exercisetable`;
 CREATE TABLE IF NOT EXISTS `exercisetable` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `workout` varchar(50) NOT NULL,
@@ -79,12 +76,13 @@ CREATE TABLE IF NOT EXISTS `exercisetable` (
   `createdDate` date NOT NULL,
   `image` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
--- Dumping data for table workout.exercisetable: ~0 rows (approximately)
+-- Dumping data for table workout.exercisetable: ~1 rows (approximately)
+REPLACE INTO `exercisetable` (`id`, `workout`, `reps`, `time`, `sets`, `weight`, `createdDate`, `image`) VALUES
+	(1, 'dumbells', 1, 0, 1, 1, '2024-12-29', NULL);
 
 -- Dumping structure for table workout.prevuserexercisedata
-DROP TABLE IF EXISTS `prevuserexercisedata`;
 CREATE TABLE IF NOT EXISTS `prevuserexercisedata` (
   `workoutid` bigint(20) NOT NULL,
   `userid` varchar(50) DEFAULT NULL,
@@ -92,14 +90,15 @@ CREATE TABLE IF NOT EXISTS `prevuserexercisedata` (
   `prevweight` varchar(50) DEFAULT NULL,
   `prevtime` varchar(50) DEFAULT NULL,
   `prevreps` varchar(50) DEFAULT NULL,
-  `lastupdate` varchar(50) DEFAULT NULL,
+  `lastupdate` date DEFAULT NULL,
   KEY `workoutid` (`workoutid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
--- Dumping data for table workout.prevuserexercisedata: ~0 rows (approximately)
+-- Dumping data for table workout.prevuserexercisedata: ~1 rows (approximately)
+REPLACE INTO `prevuserexercisedata` (`workoutid`, `userid`, `prevsets`, `prevweight`, `prevtime`, `prevreps`, `lastupdate`) VALUES
+	(1, '1', '4', '15,12.5,12.5,10', NULL, '12,12,12,12', '2024-12-29');
 
 -- Dumping structure for table workout.userexercisedata
-DROP TABLE IF EXISTS `userexercisedata`;
 CREATE TABLE IF NOT EXISTS `userexercisedata` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `workoutid` bigint(20) NOT NULL,
@@ -109,14 +108,15 @@ CREATE TABLE IF NOT EXISTS `userexercisedata` (
   `planweight` varchar(50) DEFAULT NULL,
   `planreps` varchar(50) DEFAULT NULL,
   `setday` varchar(50) DEFAULT NULL,
-  `lastupdate` varchar(50) DEFAULT NULL,
+  `lastupdate` date DEFAULT NULL,
   KEY `id` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
--- Dumping data for table workout.userexercisedata: ~0 rows (approximately)
+-- Dumping data for table workout.userexercisedata: ~1 rows (approximately)
+REPLACE INTO `userexercisedata` (`id`, `workoutid`, `userid`, `plansets`, `plantime`, `planweight`, `planreps`, `setday`, `lastupdate`) VALUES
+	(1, 1, 1, '4', '', '20,30,30,20', '12,12,12,12', 'monday', '2024-12-29');
 
 -- Dumping structure for table workout.users
-DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
   `id` bigint(20) NOT NULL DEFAULT 0,
   `username` varchar(50) NOT NULL DEFAULT '',
