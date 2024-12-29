@@ -1,8 +1,8 @@
 -- --------------------------------------------------------
 -- Host:                         127.0.0.1
--- Server version:               11.3.0-MariaDB - mariadb.org binary distribution
+-- Server version:               11.3.2-MariaDB - mariadb.org binary distribution
 -- Server OS:                    Win64
--- HeidiSQL Version:             12.5.0.6677
+-- HeidiSQL Version:             12.6.0.6765
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -16,10 +16,12 @@
 
 
 -- Dumping database structure for workout
+DROP DATABASE IF EXISTS `workout`;
 CREATE DATABASE IF NOT EXISTS `workout` /*!40100 DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci */;
 USE `workout`;
 
 -- Dumping structure for table workout.exercises
+DROP TABLE IF EXISTS `exercises`;
 CREATE TABLE IF NOT EXISTS `exercises` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `workout` varchar(50) DEFAULT NULL,
@@ -32,8 +34,8 @@ CREATE TABLE IF NOT EXISTS `exercises` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
--- Dumping data for table workout.exercises: ~29 rows (approximately)
-INSERT INTO `exercises` (`id`, `workout`, `reps`, `sets`, `weight`, `lastupdate`, `setday`, `image`) VALUES
+-- Dumping data for table workout.exercises: ~30 rows (approximately)
+REPLACE INTO `exercises` (`id`, `workout`, `reps`, `sets`, `weight`, `lastupdate`, `setday`, `image`) VALUES
 	(2, 'Leg press', '12', '3', '230ib', '10/20/22', 'Monday', 'LegPress.jpg'),
 	(5, 'rear delts', '12', '3', '50lb', '10/22/23', 'Wednesday', NULL),
 	(6, 'bench press', '12', '3', '50lb', '10/21/21', 'Thursday', 'BenchPress.jpg'),
@@ -65,17 +67,67 @@ INSERT INTO `exercises` (`id`, `workout`, `reps`, `sets`, `weight`, `lastupdate`
 	(34, 'Typing', '200', '1', 'hands', '10/22/23', 'monday', NULL),
 	(38, 'test', '5', '3', '20lb', '12/12/23', 'monday', NULL);
 
+-- Dumping structure for table workout.exercisetable
+DROP TABLE IF EXISTS `exercisetable`;
+CREATE TABLE IF NOT EXISTS `exercisetable` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `workout` varchar(50) NOT NULL,
+  `reps` tinyint(4) NOT NULL DEFAULT 0,
+  `time` tinyint(4) NOT NULL DEFAULT 0,
+  `sets` tinyint(4) NOT NULL DEFAULT 0,
+  `weight` tinyint(4) NOT NULL DEFAULT 0,
+  `createdDate` date NOT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+-- Dumping data for table workout.exercisetable: ~0 rows (approximately)
+
+-- Dumping structure for table workout.prevuserexercisedata
+DROP TABLE IF EXISTS `prevuserexercisedata`;
+CREATE TABLE IF NOT EXISTS `prevuserexercisedata` (
+  `workoutid` bigint(20) NOT NULL,
+  `userid` varchar(50) DEFAULT NULL,
+  `prevsets` varchar(50) DEFAULT NULL,
+  `prevweight` varchar(50) DEFAULT NULL,
+  `prevtime` varchar(50) DEFAULT NULL,
+  `prevreps` varchar(50) DEFAULT NULL,
+  `lastupdate` varchar(50) DEFAULT NULL,
+  KEY `workoutid` (`workoutid`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+-- Dumping data for table workout.prevuserexercisedata: ~0 rows (approximately)
+
+-- Dumping structure for table workout.userexercisedata
+DROP TABLE IF EXISTS `userexercisedata`;
+CREATE TABLE IF NOT EXISTS `userexercisedata` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `workoutid` bigint(20) NOT NULL,
+  `userid` bigint(20) NOT NULL,
+  `plansets` varchar(50) DEFAULT NULL,
+  `plantime` varchar(50) DEFAULT NULL,
+  `planweight` varchar(50) DEFAULT NULL,
+  `planreps` varchar(50) DEFAULT NULL,
+  `setday` varchar(50) DEFAULT NULL,
+  `lastupdate` varchar(50) DEFAULT NULL,
+  KEY `id` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+-- Dumping data for table workout.userexercisedata: ~0 rows (approximately)
+
 -- Dumping structure for table workout.users
+DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
   `id` bigint(20) NOT NULL DEFAULT 0,
   `username` varchar(50) NOT NULL DEFAULT '',
   `password` varchar(50) NOT NULL DEFAULT '',
+  `role` varchar(50) NOT NULL DEFAULT 'user',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- Dumping data for table workout.users: ~1 rows (approximately)
-INSERT INTO `users` (`id`, `username`, `password`) VALUES
-	(1, 'admin', 'admin');
+REPLACE INTO `users` (`id`, `username`, `password`, `role`) VALUES
+	(1, 'admin', 'admin', 'user');
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
